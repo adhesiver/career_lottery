@@ -6,7 +6,8 @@ class Lottery extends Eloquent{
 
 	public function lattendants()
     {
-        return $this->belongsToMany('User', 'attendant_lottery', 'lottery_id', 'attendant_id');
+        $relation = $this->belongsToMany('User', DB::connection('mysql')->getDatabaseName().'.attendant_lottery', 'lottery_id', 'attendant_id');
+        return $relation;
     }
 
     public function scopeTime($query)

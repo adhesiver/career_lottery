@@ -13,11 +13,9 @@
 
 Route::get('/', function()
 {
-	$user = User::where('StuID','=','101502518')->firstOrFail();
-	//Auth::login($user);
-	// dd(Auth::user()->Post);
-	dd(get_class(Auth::user()));
-	return View::make('hello');
+	$award = Award::find(1);
+  dd($result = $award->users);
+	return Redirect::route('lottery.index');
 });
 
 Route::get('/test_lottery/{id}', function($id)

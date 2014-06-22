@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAttendantColumn extends Migration {
+class CreateActivityInfoTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,12 @@ class AddAttendantColumn extends Migration {
 	 */
 	public function up()
 	{
-		//
-		Schema::table('attendant',function($table){
-
+		Schema::create('activity_info', function(Blueprint $table)
+		{
+			$table->increments('id');
 			$table->integer('point')->default(0);
+			$table->integer('activity_id')->default(0);
+			$table->timestamps();
 		});
 	}
 
@@ -26,12 +28,7 @@ class AddAttendantColumn extends Migration {
 	 */
 	public function down()
 	{
-		//
-		Schema::table('attendant',function($table){
-
-			$table->dropColumn('point')->default(0);
-		});
-		
+		Schema::drop('activity_info');
 	}
 
 }

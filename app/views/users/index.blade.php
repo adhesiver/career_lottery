@@ -48,7 +48,7 @@
 						@foreach (Auth::user()->belongActivity as $activity)
 							<tr>
 								<td>{{$activity->Name}}</td>
-								<td>{{$activity->point}}</td>
+								<td>{{$activity->info->point}}</td>
 							</tr>
 						@endforeach				
 					</tbody>

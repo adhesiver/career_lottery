@@ -6,6 +6,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class Administrator extends Eloquent implements UserInterface, RemindableInterface{
 
 	protected $table = 'administrator';
+	protected $connection = 'mysql_activity';
 	protected $primaryKey = 'OID';
 	public $timestamps = false;
 
@@ -31,6 +32,15 @@ class Administrator extends Eloquent implements UserInterface, RemindableInterfa
 		return $this->password;
 	}
 
+	public function setAttribute($key, $value)
+  {
+    $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+    if (!$isRememberTokenAttribute)
+    {
+      parent::setAttribute($key, $value);
+    }
+  }
+
 	/*
 	 * Get the token value for the "remember me" session.
 	 *
@@ -39,7 +49,7 @@ class Administrator extends Eloquent implements UserInterface, RemindableInterfa
 	 
 	public function getRememberToken()
 	{
-		return $this->remember_token;
+		return null;
 	}
 
 	/**
@@ -50,7 +60,7 @@ class Administrator extends Eloquent implements UserInterface, RemindableInterfa
 	 */
 	public function setRememberToken($value)
 	{
-		$this->remember_token = $value;
+		
 	}
 
 	/**
@@ -60,7 +70,7 @@ class Administrator extends Eloquent implements UserInterface, RemindableInterfa
 	 */
 	public function getRememberTokenName()
 	{
-		return 'remember_token';
+		return null;
 	}
 
 	/**

@@ -3,6 +3,7 @@
 class Activity extends Eloquent {
 
 	protected $table = 'activity';
+    protected $connection = 'mysql_activity';
 	protected $primaryKey = 'OID';
 	public $timestamps = false;
 
@@ -15,6 +16,9 @@ class Activity extends Eloquent {
     {
         return $query->orderBy('OID','desc');
     }
-}
 
-?>
+    public function info()
+    {
+        return $this->hasOne('ActivityInfo', 'activity_id', 'OID');
+    }
+}

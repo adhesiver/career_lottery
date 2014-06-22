@@ -18,10 +18,16 @@
         <tbody data-link="row" class="rowlink">
             @foreach($activities as $activity )   
                 <tr>
-                    <td>{{ $activity->Title }}</td>
-                    <td>{{ $activity->point }}</td>
+                    <td>{{{ $activity->Title }}}</td>
                     <td>
-                    @if($activity->point==0)
+                        @if($activity->info != null)
+                            {{{ $activity->info->point }}}
+                        @else
+                            0
+                        @endif
+                    </td>
+                    <td>
+                    @if($activity->info == null)
                     <a class="btn btn-small" href="{{ URL::to('activity/' . $activity->OID . '/edit') }}"><span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     @endif

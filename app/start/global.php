@@ -69,6 +69,11 @@ App::error(function(Exception $exception, $code)
 |
 */
 
+Event::listen("illuminate.query", function($query, $bindings, $time, $name){
+    \Log::warning($query."\n");
+    \Log::warning(json_encode($bindings)."\n");
+});
+
 App::down(function()
 {
 	return Response::make("Be right back!", 503);
