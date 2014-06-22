@@ -118,7 +118,7 @@ class MyUserProvider
 
         if(($error = $pop3->Open()) == ""){
             //計中email登入
-            if(($credentials['username'] == '100401003') || ($error = $pop3->Login($credentials['username'], $credentials['password'], 0)) == "")
+            if(($error = $pop3->Login($credentials['username'], $credentials['password'], 0)) == "")
             {
                 return true;
             }

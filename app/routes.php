@@ -13,8 +13,8 @@
 
 Route::get('/', function()
 {
-	$award = Award::find(1);
-  dd($result = $award->users);
+	// $award = Award::find(1);
+ //  dd($result = $award->users);
 	return Redirect::route('lottery.index');
 });
 
