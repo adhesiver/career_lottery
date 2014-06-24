@@ -36,7 +36,9 @@
             $point = Input::get('point');
             $atid_array = Input::get('atid');
             $activity = Activity::find($OID);
-            $activity->point = $point;
+            $info = new ActivityInfo();
+            $info->point = $point;
+            $info->activity_id = $activity->OID;
 
             $validator = Validator::make(
                 array(
@@ -71,7 +73,7 @@
                 }               
             }
 
-            if($activity->save())
+            if($info->save())
             {
                 return Redirect::route('activity.index');
             }

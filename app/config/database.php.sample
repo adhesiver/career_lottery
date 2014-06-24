@@ -55,9 +55,20 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
+			'database'  => 'career_lottery',
+			'username'  => 'root',
+			'password'  => '',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+
+		'mysql_activity' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
 			'database'  => 'career_activity',
 			'username'  => 'root',
-			'password'  => '803panpan',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

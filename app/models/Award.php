@@ -6,7 +6,7 @@ class Award extends Eloquent {
 
     public function users()
     {
-        return $this->belongsToMany('User', 'award_results');
+        return $this->belongsToMany('User', 'career_lottery.award_results');
     }
 
     public function lottery()

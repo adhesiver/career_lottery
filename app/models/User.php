@@ -6,6 +6,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $primaryKey = 'OID';
+  protected $connection = 'mysql_activity';
 	public $timestamps = false;
 	/**
 	 * The database table used by the model.
@@ -48,7 +49,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function getRememberToken()
 	{
-		return $this->remember_token;
+		return null;
 	}
 
 	/**
@@ -59,7 +60,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function setRememberToken($value)
 	{
-		$this->remember_token = $value;
+		
 	}
 
 	/**
@@ -69,8 +70,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	public function getRememberTokenName()
 	{
-		return 'remember_token';
+		return null;
 	}
+
+  public function setAttribute($key, $value)
+  {
+    $isRememberTokenAttribute = $key == $this->getRememberTokenName();
+    if (!$isRememberTokenAttribute)
+    {
+      parent::setAttribute($key, $value);
+    }
+  }
 
 	/**
 	 * Get the e-mail address where password reminders are sent.

@@ -183,7 +183,7 @@
         public function joinlottery($id)
         {
             //報名參加抽獎後扣除點數，並記錄一筆資料
-            $lottery = Lottery::find($id);
+            $lottery = Lottery::findOrFail($id);
             Auth::user()->rule->point = Auth::user()->rule->point - $lottery->consume_point;
             if(Auth::user()->rule->point>=0){
                 Auth::user()->rule->save();

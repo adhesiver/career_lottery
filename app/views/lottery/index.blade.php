@@ -54,7 +54,7 @@
                                     @if(strtotime($lottery->end_time)<time())
                                         <span class="label label-default">已截止</span>
                                     @else
-                                        @if($lottery->consume_point > Auth::user()->point)
+                                        @if((Auth::user()->rule != null) && $lottery->consume_point > Auth::user()->rule->point)
                                             <span class="label label-Warning">點數不足</span>
                                         @else
                                             <a class="label label-info" href="{{ URL::to('joinlottery', array('id'=>$lottery->id)) }}" onclick='return confirm("報名後將扣除點數，確認參加？")'>報名參加</a>
